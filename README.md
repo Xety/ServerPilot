@@ -28,7 +28,7 @@ $ vagrant ssh
   * Copy the **whole** command (and let the page open in your browser):
 ![fdf4c72543af0a52e47b3474b150e93b](https://cloud.githubusercontent.com/assets/8210023/11672449/e0f1da26-9e10-11e5-84f0-2b3229e75c48.png)
 
-  * Paste the command in the VM terminal wait until to get this message :
+  * Paste the command in the VM terminal and wait until to get this message :
 ![c5d6522793686dbc0ab42d75e5be7df1](https://cloud.githubusercontent.com/assets/8210023/11672125/f12bf9ce-9e0d-11e5-8a8c-8f18ee4c799e.png)
 
   * Watch **ServerPilot** install
@@ -56,9 +56,9 @@ $ vagrant ssh
 
 ## Edit the `Vagranfile` file
   * Now, you must edit the `Vagranfile` and **uncomment** this line :
-    ```
-    config.vm.synced_folder '/var/www/Sites/website', '/srv/users/serverpilot/apps/website/public', owner: "serverpilot", group: "serverpilot"
-    ```
+```ruby
+config.vm.synced_folder '/var/www/Sites/website', '/srv/users/serverpilot/apps/website/public', owner: "serverpilot", group: "serverpilot"
+```
   * Adapt it to your system. The first part, is the path on **your** system. The second part, is the path on the VM system.
     * **Note** : Don't remove the `owner` and `group` keys. I have got some issues with the permissions, and this configuration seems to resolve all permissions bugs. If you want to add new `synced_folder`, you must add the `owner` and `group` keys with the `serverpilot` value.
   * Execute the following command to reload the VM with the modified Vagranfile :
@@ -86,13 +86,13 @@ The following configuration are not required, but can be usefull if you plan to 
   * Place the archive where you want on your system. For the tutorial, i have placed it in `/var/www/Sites/pma`.
   * Rename `config.sample.inc.php` to `config.inc.php`.
   * Now, open `config.inc.php` and set a random string of characters for the value of ``$cfg['blowfish_secret']`` near the top of the file. Exemple :
-```
+```php
 $cfg['blowfish_secret'] = 'asdof7q230984(*^3q4'
 ```
 
   * Add `192.168.56.101 pma.local.io` to your `hosts` file.
   * Uncomment and adapt (regarding to the path) the following line in the Vagranfile :
-```
+```ruby
 config.vm.synced_folder '/var/www/Sites/pma', '/srv/users/serverpilot/apps/pma/public', owner: "serverpilot", group: "serverpilot"
 ```
   * Execute the following command to reload the VM with the modified Vagranfile :
@@ -112,19 +112,19 @@ $ vagrant reload
     * `Server` => `local.io`
   * Add `192.168.56.101 xety.local.io` to your `hosts` file.
   * Uncomment and adapt (regarding to the path) the following line in the Vagranfile :
-  ```
-  config.vm.synced_folder '/var/www/Sites/xety', '/srv/users/serverpilot/apps/xety/public', owner: "serverpilot", group: "serverpilot"
-  ```
+```ruby
+config.vm.synced_folder '/var/www/Sites/xety', '/srv/users/serverpilot/apps/xety/public', owner: "serverpilot", group: "serverpilot"
+```
   * Execute the following command to reload the VM with the modified Vagranfile :
-  ```bash
-  $ vagrant reload
-  ```
-  * * Go to [xety.local.io](http://xety.local.io) and enjoy ! Yes, it's very simple to do.
+```bash
+$ vagrant reload
+```
+  * Go to [xety.local.io](http://xety.local.io) and enjoy ! Yes, it's very simple to do.
 
 ### Connect to the `SFTP`
 Yes, you can connect to the server using the SFTP method !
   * Use your prefered software. I will use `FileZilla`.
-  * Login in FileZilla with the fallowing credentials :
+  * Login in FileZilla with the following credentials :
     * `Host` => `192.168.56.101`
     * `User` => `serverpilot`
     * `Password` => `The SFTP password that you provided at the beginning of this tutorial`
@@ -137,6 +137,7 @@ Yes, you can connect to the server using the SFTP method !
   * But i recommend to you to use the `serverpilot` user and not the `vagrant`, else you will probably have some permissions issues (i.e : https://serverpilot.io/community/articles/how-to-fix-file-permissions.html)
 
 ### Share your VM
+  * Create an account there : https://vagrantcloud.com/account/new
   * It's easy with 1 command, more detail there : https://vagrantcloud.com/help/vagrant/shares/create
   * Possible issue :
-    * `Why the share doesn't show the good application ?` => Because ServerPilot define the default application by alphabeticallyorder. More information : https://serverpilot.io/community/articles/how-to-set-the-default-app.html
+    * `Why the share doesn't show the good application ?` => Because ServerPilot define the default application by alphabetically order. More information : https://serverpilot.io/community/articles/how-to-set-the-default-app.html

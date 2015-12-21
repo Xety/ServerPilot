@@ -45,7 +45,7 @@ $ vagrant ssh
   * Edit the following file as `administrator` / `root`
     * Ubuntu/Mac OS X : `/etc/hosts`
     * Windows : `C:\WINDOWS\system32\drivers\etc\hosts`
-  * Add the follow code in this file :
+  * Add the following code in this file :
     * `192.168.56.101 local.io`
     * If you plan to add sub-domains, you can add them now in the `hosts` file :
 ```
@@ -87,7 +87,7 @@ The following configuration are not required, but can be usefull if you plan to 
   * Rename `config.sample.inc.php` to `config.inc.php`.
   * Now, open `config.inc.php` and set a random string of characters for the value of ``$cfg['blowfish_secret']`` near the top of the file. Exemple :
 ```php
-$cfg['blowfish_secret'] = 'asdof7q230984(*^3q4'
+$cfg['blowfish_secret'] = 'asdof7q230984(*^3q4';
 ```
 
   * Add `192.168.56.101 pma.local.io` to your `hosts` file.
@@ -111,7 +111,7 @@ $ vagrant reload
     * `Domain` => `xety.local.io`
     * `Server` => `local.io`
   * Add `192.168.56.101 xety.local.io` to your `hosts` file.
-  * Uncomment and adapt (regarding to the path) the following line in the Vagranfile :
+  * Uncomment and adapt (regarding to your path) the following line in the Vagranfile :
 ```ruby
 config.vm.synced_folder '/var/www/Sites/xety', '/srv/users/serverpilot/apps/xety/public', owner: "serverpilot", group: "serverpilot"
 ```
@@ -134,10 +134,10 @@ Yes, you can connect to the server using the SFTP method !
     * `User` => `vagrant`
     * `Password` => `vagrant`
     * `Port` => `22`
-  * But i recommend to you to use the `serverpilot` user and not the `vagrant`, else you will probably have some permissions issues (i.e : https://serverpilot.io/community/articles/how-to-fix-file-permissions.html)
+  * But **i recommend** you to use the `serverpilot` user and not the `vagrant`, else you will probably have some permissions issues (i.e : https://serverpilot.io/community/articles/how-to-fix-file-permissions.html)
 
 ### Share your VM
   * Create an account there : https://vagrantcloud.com/account/new
-  * It's easy with 1 command, more detail there : https://vagrantcloud.com/help/vagrant/shares/create
+  * It's easy with 1 command, follow the `HTTP` method there : https://vagrantcloud.com/help/vagrant/shares/create
   * Possible issue :
     * `Why the share doesn't show the good application ?` => Because ServerPilot define the default application by alphabetically order. More information : https://serverpilot.io/community/articles/how-to-set-the-default-app.html

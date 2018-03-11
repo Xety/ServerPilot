@@ -54,8 +54,8 @@ $ vagrant ssh
 192.168.56.101 subdomain2.local.io
 ```
 
-## Edit the `Vagranfile` file
-  * Now, you must edit the `Vagranfile` and **uncomment** this line :
+## Edit the `Vagrantfile` file
+  * Now, you must edit the `Vagrantfile` and **uncomment** this line :
 ```ruby
 config.vm.synced_folder '/var/www/Sites/website', '/srv/users/serverpilot/apps/website/public', owner: "serverpilot", group: "serverpilot"
 ```
